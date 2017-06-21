@@ -87,176 +87,52 @@ class Lights extends Component {
 }
 
 class Room extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props);
     this.state = {
+      isToggleOn: true,
 
-        sOffice: false,
+      sOffice: false,
 
-        sOfficeBathroom: false,
+      sOfficeBathroom: false,
 
-        sNeekonBedroom: false,
+      sNeekonBedroom: false,
 
-        sRyanRoom: false,
+      sRyanRoom: false,
 
-        sHomeworkRoom: false,
+      sHomeworkRoom: false,
 
-        sLivingRoom: false,
+      sLivingRoom: false,
 
-        sGallery: false,
+      sGallery: false,
 
-        sGuestBathroom: false,
+      sGuestBathroom: false,
 
-        sDiningRoom: false,
+      sDiningRoom: false,
 
-        sKitchen: false,
+      sKitchen: false,
 
-        sMasterBedroom: false,
+      sMasterBedroom: false,
 
-        sFamilyRoom: false
-    }
+      sFamilyRoom: false
+    };
+    // This binding is necessary to make `this` work in the callback
+    this.handleClick = this.handleClick.bind(this);
   }
-  lumin() {
-    var rooms = [
 
-        'Office',
-
-        'Office Bathroom',
-
-        'Neekon Bedroom',
-
-        'Ryan Room',
-
-        'Homework Room',
-
-        'Living Room',
-
-        'Gallery',
-
-        'Guest Bathroom',
-
-        'Dining Room',
-
-        'Kitchen',
-
-        'Master Bedroom',
-
-        'Family Room'
-    ]
-    console.log(this.props.lumer + " is in check!")
-    switch (this.props.lumer) {
-      case rooms[0]:
-        if(this.state.sOffice) {
-
-        } else {
-
-        }
-        break;
-
-      case rooms[1]:
-        if(this.state.sOffice) {
-
-        } else {
-
-        }
-        break;
-
-      case rooms[2]:
-        if(this.state.sOffice) {
-
-        } else {
-
-        }
-        break;
-
-      case rooms[3]:
-        if(this.state.sOffice) {
-
-        } else {
-
-        }
-        break;
-
-      case rooms[4]:
-        if(this.state.sOffice) {
-
-        } else {
-
-        }
-        break;
-
-      case rooms[5]:
-        if(this.state.sOffice) {
-
-        } else {
-
-        }
-        break;
-
-      case rooms[6]:
-        if(this.state.sOffice) {
-
-        } else {
-
-        }
-        break;
-
-      case rooms[7]:
-        if(this.state.sOffice) {
-
-        } else {
-
-        }
-        break;
-
-      case rooms[8]:
-        if(this.state.sOffice) {
-
-        } else {
-
-        }
-        break;
-
-      case rooms[9]:
-        if(this.state.sOffice) {
-
-        } else {
-          
-        }
-        break;
-
-      case rooms[10]:
-        if(this.state.sOffice) {
-
-        } else {
-
-        }
-        break;
-
-      case rooms[11]:
-        if(this.state.sOffice) {
-
-        } else {
-
-        }
-        break;
-
-      case rooms[12]:
-        if(this.state.sOffice) {
-
-        } else {
-
-        }
-        break;
-    }
-
+  handleClick() {
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn
+    }));
+    console.log("clicked")
   }
+
   render() {
-    return(
-      <a onClick={this.lumin.bind(this)} className="toggle-text">
-        {this.props.children}
+    return (
+      <a onClick={this.handleClick} className="toggle-text">
+        {this.state.isToggleOn ? this.props.children + ': ON' : this.props.children + ': OFF'}
       </a>
-    )
+    );
   }
 }
 
