@@ -4,7 +4,6 @@ var delayer = require('delayed')
 
 class Cards extends Component {
   render() {
-    console.log(this.props)
     return (
         <div id="wrapper-div">
           <Card>
@@ -75,7 +74,7 @@ class Lights extends Component {
             }
           ].map((item, i) => {
             return (
-              <Room lumer={item.room}>
+              <Room lumer={"s" + item.room.replace(" ", "")} key={i}>
                 {item.room}
               </Room>
             )
@@ -90,7 +89,7 @@ class Room extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isToggleOn: true,
+      isToggleOn: false,
 
       sOffice: false,
 
@@ -124,12 +123,12 @@ class Room extends Component {
     this.setState(prevState => ({
       isToggleOn: !prevState.isToggleOn
     }));
-    console.log("clicked")
+    console.log(this.props.lumer + " clicked")
   }
 
   render() {
     return (
-      <a onClick={this.handleClick} className="toggle-text">
+      <a onClick={this.handleClick} className={this.state.isToggleOn ? "toggle-text-on" : "toggle-text-off"}>
         {this.state.isToggleOn ? this.props.children + ': ON' : this.props.children + ': OFF'}
       </a>
     );
@@ -204,7 +203,6 @@ class DownPage extends React.Component {
   console.log(this.props)
   }
   render() {
-    console.log(this.props)
     return (
       <div boyo={"sup"} className={this.state.clicked ? "DownViewBox box_clicked" : "DownViewBox"}>
         <svg id="Layer_1" onClick={this.scrollPageToCard.bind(this)} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.8 156.5">

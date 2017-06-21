@@ -15,9 +15,9 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  height: auto;
+  height: 8%;
   min-height: 75px;
-  max-height: 175px;
+  max-height: 150px;
   box-sizing: border-box;
   background: #333333;
   list-style-type: none;
@@ -49,7 +49,7 @@ body {
   background-color: white;
   display: block;
   width: 50%;
-  min-width: 400px;
+  min-width: 610px;
   height: 100%;
   padding: 16px;
   border-radius: 10px;
@@ -70,6 +70,7 @@ body {
   background-color: white;
   display: block;
   width: 50%;
+  min-width: 400px;
   height: 50%;
   padding: 16px;
   border-radius: 10px;
@@ -90,6 +91,7 @@ body {
   background-color: white;
   display: block;
   width: 50%;
+  min-width: 400px;
   height: auto;
   padding: 16px;
   border-radius: 10px;
@@ -106,11 +108,11 @@ body {
   box-shadow: 0 10px 40px 0 rgba(0,0,0,0.2);
 }
 
-.toggle-text {
+.toggle-text-off {
   margin-top: 3%;
   margin-bottom: 3%;
   display: block;
-  min-width: 490px;
+  min-width: 500px;
   color: #9E9E9E;
   text-decoration: none;
   font-family: 'Quicksand', sans-serif;
@@ -120,10 +122,30 @@ body {
   transition: 0.2s ease-out;
 }
 
-.toggle-text:hover {
+.toggle-text-off:hover {
   color: blue;
   transform: scale(1.1);
 }
+
+.toggle-text-on {
+  margin-top: 3%;
+  margin-bottom: 3%;
+  display: block;
+  min-width: 500px;
+  color: blue;
+  text-decoration: none;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 300%;
+  user-select: none;
+  transition-delay: 0s;
+  transition: 0.2s ease-out;
+}
+
+.toggle-text-on:hover {
+  color: #9E9E9E;
+  transform: scale(1.1);
+}
+
 
 .link-wrapper {
   margin-top: 7.5px;
@@ -216,12 +238,12 @@ fill: none;
 }
 
 .viewBoxToolbar {
-  width: 6.5%;
+  width: 4.5%;
   min-width: 75px;
-  max-width: 130px;
-  height: 6.5%;
+  max-width: 120px;
+  height: 4.5%;
   min-height: 75px;
-  max-height: 130px;
+  max-height: 120px;
   display: block;
   animation-name: rotate;
   animation-duration: 1s;
@@ -253,8 +275,8 @@ fill: none;
   margin-left: auto;
   margin-top: 20%;
   margin-bottom: 15%;
-  min-height: 100px;
-  min-width: 100px;
+  min-height: 75px;
+  min-width: 75px;
   max-height: 350px;
   max-width: 350px;
   transform-origin: center;
@@ -310,7 +332,7 @@ fill: none;
 }
 
 #wrapper-div {
-  margin-top: 15%;
+  margin-top: 120px;
   margin-bottom: 50px;
   display: flex;
   flex-direction: column;
