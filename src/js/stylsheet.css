@@ -15,8 +15,8 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 8%;
-  min-height: 75px;
+  height: auto;
+  min-height: 120px;
   max-height: 150px;
   box-sizing: border-box;
   background: #333333;
@@ -50,7 +50,7 @@ body {
   display: block;
   width: 50%;
   min-width: 610px;
-  height: 100%;
+  height: auto;
   padding: 16px;
   border-radius: 10px;
   margin-top: 0%;
@@ -109,8 +109,8 @@ body {
 }
 
 .toggle-text-off {
-  margin-top: 3%;
-  margin-bottom: 3%;
+  margin-top: 2%;
+  margin-bottom: 2%;
   display: block;
   min-width: 500px;
   color: #9E9E9E;
@@ -123,13 +123,13 @@ body {
 }
 
 .toggle-text-off:hover {
-  color: blue;
+  color: #9E9E9E;
   transform: scale(1.1);
 }
 
 .toggle-text-on {
-  margin-top: 3%;
-  margin-bottom: 3%;
+  margin-top: 2%;
+  margin-bottom: 2%;
   display: block;
   min-width: 500px;
   color: blue;
@@ -142,7 +142,7 @@ body {
 }
 
 .toggle-text-on:hover {
-  color: #9E9E9E;
+  color: blue;
   transform: scale(1.1);
 }
 
@@ -245,6 +245,7 @@ fill: none;
   min-height: 75px;
   max-height: 120px;
   display: block;
+  transform-origin: center;
   animation-name: rotate;
   animation-duration: 1s;
   animation-iteration-count: infinite;
@@ -308,7 +309,6 @@ fill: none;
   font-family: 'Lalezar', cursive;
   font-size: 1000%;
   height: 50%;
-
   display: block;
   text-align: center;
 }
@@ -332,8 +332,7 @@ fill: none;
 }
 
 #wrapper-div {
-  margin-top: 120px;
-  margin-bottom: 50px;
+  margin-top: 12%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -362,8 +361,8 @@ fill: none;
   margin-right: auto;
   border-radius: 1px;;
   background-color: #333333;
-  margin-top: 0px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 #card-description {

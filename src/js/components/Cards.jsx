@@ -31,6 +31,10 @@ class Card extends Component {
 }
 
 class Lights extends Component {
+  receivedState(room, isOn) {
+    console.log("This was received by the wrapper")
+    console.log(room + ": " + isOn)
+  }
   render() {
     return(
       <div className="Lights">
@@ -74,11 +78,17 @@ class Lights extends Component {
             }
           ].map((item, i) => {
             return (
-              <Room lumer={"s" + item.room.replace(" ", "")} key={i}>
+              <Room stateChange={this.receivedState.bind(this)} lumer={"s" + item.room.replace(" ", "")} key={i}>
                 {item.room}
               </Room>
             )
           })}
+        </div>
+        <div id="card-title-footer" />
+        <div className="link-wrapper">
+          <Room stateChange={this.receivedState.bind(this)} lumer={"all"}>
+            All Lights
+          </Room>
         </div>
       </div>
     )
@@ -123,14 +133,15 @@ class Room extends Component {
     this.setState(prevState => ({
       isToggleOn: !prevState.isToggleOn
     }));
+    this.props.stateChange(this.props.lumer, this.state.isToggleOn)
     console.log(this.props.lumer + " clicked")
   }
 
   render() {
     return (
-      <a onClick={this.handleClick} className={this.state.isToggleOn ? "toggle-text-on" : "toggle-text-off"}>
+      <span onClick={this.handleClick} className={this.state.isToggleOn ? "toggle-text-on" : "toggle-text-off"}>
         {this.state.isToggleOn ? this.props.children + ': ON' : this.props.children + ': OFF'}
-      </a>
+      </span>
     );
   }
 }
