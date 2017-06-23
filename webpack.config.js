@@ -1,4 +1,5 @@
 var debug = process.env.NODE_ENV !== "production";
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var webpack = require('webpack');
 var path = require('path');
 
@@ -19,11 +20,15 @@ module.exports = {
       },
       {
         test: /\.png$/,
-        loader: 'file-loader'
+        use: 'file-loader'
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loader: 'file-loader'
+        use: 'file-loader'
+      },
+      {
+        test: /\.scss$/,
+        loaders: ["style-loader", "css-loader", "sass-loader"]
       }
     ]
   },
@@ -31,7 +36,9 @@ module.exports = {
     path: __dirname + "/src/",
     filename: "client.min.js"
   },
-  plugins: debug ? [] : [
+  plugins: debug ? [
+
+  ] : [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
