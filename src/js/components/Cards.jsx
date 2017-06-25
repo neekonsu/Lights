@@ -1,4 +1,5 @@
 import React, {Component} from "react"
+import * as firebase from "firebase"
 
 class Cards extends Component {
   render() {
@@ -24,8 +25,21 @@ class Card extends Component {
 }
 
 class Lights extends Component {
+  constructor() {
+    super()
+    var config = {
+    apiKey: "AIzaSyDJ31YrXt8JAPUZHYGNRS8WNjoHaz8ssuE",
+    authDomain: "home-b7104.firebaseapp.com",
+    databaseURL: "https://home-b7104.firebaseio.com",
+    projectId: "home-b7104",
+    storageBucket: "home-b7104.appspot.com",
+    messagingSenderId: "42864256502"
+  };
+  firebase.initializeApp(config);
+  }
   receivedState(room, isOn) {
-    console.log("This was received by the wrapper")
+    var database = firebase.database()
+    firebase.database().ref().child('/rooms/' + room).set(isOn);
     console.log(room + ": " + isOn)
   }
   render() {
@@ -33,42 +47,18 @@ class Lights extends Component {
       <Card>
         <div className="link-wrapper">
           {[
-            {
-              room: 'Office'
-            },
-            {
-              room: 'Office Bathroom'
-            },
-            {
-              room: 'Neekon Bedroom'
-            },
-            {
-              room: 'Ryan Room'
-            },
-            {
-              room: 'Homework Room'
-            },
-            {
-              room: 'Living Room'
-            },
-            {
-              room: 'Gallery'
-            },
-            {
-              room: 'Guest Bathroom'
-            },
-            {
-              room: 'Dining Room'
-            },
-            {
-              room: 'Kitchen'
-            },
-            {
-              room: 'Master Bedroom'
-            },
-            {
-              room: 'Family Room'
-            }
+            {room: 'Office'},
+            {room: 'Office Bathroom'},
+            {room: 'Neekon Bedroom'},
+            {room: 'Ryan Room'},
+            {room: 'Homework Room'},
+            {room: 'Living Room'},
+            {room: 'Gallery'},
+            {room: 'Guest Bathroom'},
+            {room: 'Dining Room'},
+            {room: 'Kitchen'},
+            {room: 'Master Bedroom'},
+            {room: 'Family Room'}
           ].map((item, i) => {
             return (
               <Room stateChange={this.receivedState.bind(this)} lumer={"s" + item.room.replace(" ", "")} key={i}>
@@ -103,7 +93,6 @@ class Room extends Component {
       isToggleOn: !prevState.isToggleOn
     }));
     this.props.stateChange(this.props.lumer, this.state.isToggleOn)
-    console.log(this.props.lumer + " clicked")
   }
 
   render() {

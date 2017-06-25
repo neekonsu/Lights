@@ -6,7 +6,7 @@ export default class Layout extends React.Component {
   render() {
     return (
       <div>
-        <Toolbar/><div className="toolbar-spacer"/>
+        <Toolbar/>
         <Cards/>
       </div>
     );

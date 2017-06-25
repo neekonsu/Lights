@@ -1,0 +1,16 @@
+{
+  "rooms" : {
+    "sOffice" : false,
+    "sOfficeBathroom" : false,
+    "sNeekonBedroom" : false,
+    "sRyanRoom" : false,
+    "sHomeworkRoom" : false,
+    "sLivingRoom" : false,
+    "sGallery" : false,
+    "sGuestBathroom" : false,
+    "sDiningRoom" : false,
+    "sMasterBedroom" : false,
+    "sKitchen" : false,
+    "sFamilyRoom" : false
+  }
+}

@@ -5,17 +5,17 @@ body {
   margin: 0;
   display: block;
   .card-container {
-    margin-top: 12%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: white;
     display: block;
     width: 50%;
     min-width: 400px;
-    height: 50%;
     padding: 16px;
     border-radius: 10px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 2.5%;
     box-shadow: 0 3px 20px 0 rgba(0,0,0,0.2);
     transition-duration: 0.2s;
     transition-delay: 0s;
@@ -103,11 +103,6 @@ body {
     width: 100%;
     height: 100%;
   }
-  #toolbar-spacer {
-    display: block;
-    width: 100%;
-    height: $toolbarHeight;
-  }
 }
 
 .toolbar {
@@ -115,12 +110,29 @@ body {
   top: 0;
   width: 100%;
   height: $toolbarHeight;
+  max-height: 100px;
   box-sizing: border-box;
   background: #333333;
   list-style-type: none;
-  padding: 1%;
+  padding: 18px;
   display: block;
   align-items: center;
+  .logo {
+    display: inline-block;
+    height: 100%;
+    .svg1 {
+      fill: #e51313;
+      stroke-width: 10px;
+    }
+    .cls-1, .svg2 {
+      stroke: #f96e6e;
+      stroke-miterlimit: 10;
+    }
+    .svg2 {
+      fill: none;
+      stroke-width: 13px;
+    }
+  }
   .toolbar-links {
     display: inline-block;
     .toolbar-links-a {
@@ -137,15 +149,4 @@ body {
       transform: scale(1.075);
     }
   }
-}
-.toolbar-spacer {
-  top: 0;
-  width: 100%;
-  height: $toolbarHeight;
-  min-height: 10px;
-  background: #333333;
-  list-style-type: none;
-  padding: 10%;
-  display: block;
-  align-items: center;
 }
