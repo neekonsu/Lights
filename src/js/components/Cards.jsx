@@ -1,5 +1,16 @@
 import React, {Component} from "react"
 import * as firebase from "firebase"
+import colors from "colors"
+
+var config = {
+  apiKey: "AIzaSyDJ31YrXt8JAPUZHYGNRS8WNjoHaz8ssuE",
+  authDomain: "home-b7104.firebaseapp.com",
+  databaseURL: "https://home-b7104.firebaseio.com",
+  projectId: "home-b7104",
+  storageBucket: "home-b7104.appspot.com",
+  messagingSenderId: "42864256502"
+}
+firebase.initializeApp(config)
 
 class Cards extends Component {
   render() {
@@ -25,22 +36,8 @@ class Card extends Component {
 }
 
 class Lights extends Component {
-  constructor() {
-    super()
-    var config = {
-    apiKey: "AIzaSyDJ31YrXt8JAPUZHYGNRS8WNjoHaz8ssuE",
-    authDomain: "home-b7104.firebaseapp.com",
-    databaseURL: "https://home-b7104.firebaseio.com",
-    projectId: "home-b7104",
-    storageBucket: "home-b7104.appspot.com",
-    messagingSenderId: "42864256502"
-  };
-  firebase.initializeApp(config);
-  }
-  receivedState(room, isOn) {
-    var database = firebase.database()
-    firebase.database().ref().child('/rooms/' + room).set(isOn);
-    console.log(room + ": " + isOn)
+  constructor(props) {
+    super(props)
   }
   render() {
     return(
@@ -61,7 +58,7 @@ class Lights extends Component {
             {room: 'Family Room'}
           ].map((item, i) => {
             return (
-              <Room stateChange={this.receivedState.bind(this)} lumer={"s" + item.room.replace(" ", "")} key={i}>
+              <Room lumer={"s" + item.room.replace(" ", "")} key={i}>
                 {item.room}
               </Room>
             )
@@ -69,7 +66,7 @@ class Lights extends Component {
         </div>
         <div id="card-title-footer" />
         <div className="link-wrapper">
-          <Room stateChange={this.receivedState.bind(this)} lumer={"all"}>
+          <Room lumer={"all"}>
             All Lights
           </Room>
         </div>
@@ -81,25 +78,39 @@ class Lights extends Component {
 class Room extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isToggleOn: false
-    };
+    this.state = { isToggleOn: false }
     // This binding is necessary to make `this` work in the callback
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentDidMount() {
+    var room = this.props.lumer
+    var staate;
+    firebase.database()
+    .ref()
+    .child('/rooms/' + room)
+    .once('value')
+    .then(function(snapshot) {
+      staate = snapshot.val()
+      console.log(staate)
+    })
+    console.log(this.props.lumer + ': mounted!')
   }
 
   handleClick() {
     this.setState(prevState => ({
       isToggleOn: !prevState.isToggleOn
     }));
-    this.props.stateChange(this.props.lumer, this.state.isToggleOn)
+    var database = firebase.database()
+    firebase.database().ref().child('/rooms/' + this.props.lumer).set(!this.state.isToggleOn);
+    console.log(this.props.lumer + ": " + !this.state.isToggleOn)
   }
 
   render() {
     return (
-        <span onClick={this.handleClick} className={this.state.isToggleOn ? "toggle-text-on" : "toggle-text-off"}>
+        <a onClick={this.handleClick} className={this.state.isToggleOn ? "toggle-text-on" : "toggle-text-off"}>
           {this.state.isToggleOn ? this.props.children + ': ON' : this.props.children + ': OFF'}
-        </span>
+        </a>
     )
   }
 }
