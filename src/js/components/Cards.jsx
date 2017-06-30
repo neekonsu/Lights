@@ -87,12 +87,14 @@ class Room extends Component {
     var room = this.props.lumer
     var staate;
     firebase.database()
-    .ref()
-    .child('/rooms/' + room)
-    .once('value')
-    .then(function(snapshot) {
-      staate = snapshot.val()
-      console.log(staate)
+            .ref()
+            .child('/rooms/' + room)
+            .once('value')
+            .then( (snapshot) => {
+      state = snapshot.val()
+      this.setState({
+        isToggleOn: state
+      })
     })
     console.log(this.props.lumer + ': mounted!')
   }

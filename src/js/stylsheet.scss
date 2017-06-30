@@ -75,6 +75,7 @@ body {
     .toggle-text-off:hover {
       color: #9E9E9E;
       transform: scale(1.1);
+      cursor: default;
     }
 
     .toggle-text-on {
@@ -93,6 +94,7 @@ body {
     .toggle-text-on:hover {
       color: blue;
       transform: scale(1.1);
+      cursor: default;
     }
   }
 
