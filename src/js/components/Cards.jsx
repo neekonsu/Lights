@@ -77,15 +77,15 @@ class Lights extends Component {
 
 class Room extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = { isToggleOn: false }
     // This binding is necessary to make `this` work in the callback
-    this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
     var room = this.props.lumer
-    var state;
+    var state
     firebase.database()
             .ref()
             .child('/rooms/' + room)
@@ -96,15 +96,31 @@ class Room extends Component {
         isToggleOn: state
       })
     })
+    var oioi = firebase.database().ref().child('/rooms/' + room)
+    oioi.on("value", (snapshot) => {
+      console.log('no one cares' + snapshot.val())
+      state = snapshot.val()
+      this.setState({
+        isToggleOn: state
+      })
+    })
+    var all = firebase.database().ref().child('/rooms/all')
+    all.on('value', (snapshot) => {
+      var state = snapshot.val()
+      console.log(state)
+      this.setState({
+        isToggleOn: state
+      })
+    })
     console.log(this.props.lumer + ': mounted!')
   }
 
   handleClick() {
     this.setState(prevState => ({
       isToggleOn: !prevState.isToggleOn
-    }));
+    }))
     var database = firebase.database()
-    firebase.database().ref().child('/rooms/' + this.props.lumer).set(!this.state.isToggleOn);
+    firebase.database().ref().child('/rooms/' + this.props.lumer).set(!this.state.isToggleOn)
     console.log(this.props.lumer + ": " + !this.state.isToggleOn)
   }
 
