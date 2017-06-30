@@ -85,7 +85,7 @@ class Room extends Component {
 
   componentDidMount() {
     var room = this.props.lumer
-    var staate;
+    var state;
     firebase.database()
             .ref()
             .child('/rooms/' + room)
