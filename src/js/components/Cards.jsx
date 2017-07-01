@@ -96,9 +96,16 @@ class Room extends Component {
         isToggleOn: state
       })
     })
+    if(room == 'sOffice') {
+      firebase.database().ref().child('rooms/sOffice').once('value').then( (snapshot) => {
+        this.setState({
+          isToggleOn: snapshot.val()
+        })
+      })
+    }
     var oioi = firebase.database().ref().child('/rooms/' + room)
     oioi.on("value", (snapshot) => {
-      console.log('no one cares' + snapshot.val())
+      console.log(room + ': ' + snapshot.val())
       state = snapshot.val()
       this.setState({
         isToggleOn: state
@@ -107,7 +114,6 @@ class Room extends Component {
     var all = firebase.database().ref().child('/rooms/all')
     all.on('value', (snapshot) => {
       var state = snapshot.val()
-      console.log(state)
       this.setState({
         isToggleOn: state
       })
@@ -119,7 +125,6 @@ class Room extends Component {
     this.setState(prevState => ({
       isToggleOn: !prevState.isToggleOn
     }))
-    var database = firebase.database()
     firebase.database().ref().child('/rooms/' + this.props.lumer).set(!this.state.isToggleOn)
     console.log(this.props.lumer + ": " + !this.state.isToggleOn)
   }
