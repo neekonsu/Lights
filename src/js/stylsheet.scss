@@ -50,6 +50,100 @@ body {
     box-shadow: 0 10px 40px 0 rgba(0,0,0,0.2);
   }
 
+  @media only screen and (max-width: 500px) {
+    .card-container {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 25%;
+      right: 25%;
+      bottom: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      display: block;
+      width: 50%;
+      min-width: 200px;
+      padding: 8px;
+      border-radius: 10px;
+      box-shadow: 0 3px 20px 0 rgba(0,0,0,0.2);
+      #card-title-footer {
+        display: block;
+        min-height: 2px;
+        max-height: 4px;
+        height: 0.2%;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 1px;;
+        background-color: #333333;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      #card-description {
+        display: block;
+        font-size: 56px;
+        font-family: 'Quicksand', sans-serif;
+        font-style: italic;
+        margin-top: 16px;
+      }
+    }
+    .link-wrapper {
+      margin-top: 7.5px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+      min-width: 390px;
+      height: 50%;
+      justify-content: center;
+      flex-direction: column;
+      display: flex;
+      .toggle-text-off {
+        margin-top: 2%;
+        margin-bottom: 2%;
+        display: block;
+        color: #9E9E9E;
+        text-decoration: none;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 200%;
+        user-select: none;
+        transition-delay: 0s;
+        transition: 0.2s ease-out;
+      }
+      .toggle-text-off:hover {
+        color: #9E9E9E;
+        transform: scale(1.1);
+        cursor: default;
+      }
+
+      .toggle-text-on {
+        margin-top: 2%;
+        margin-bottom: 2%;
+        display: block;
+        width: 100%;
+        color: blue;
+        text-decoration: none;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 200%;
+        user-select: none;
+        transition-delay: 0s;
+        transition: 0.2s ease-out;
+      }
+      .toggle-text-on:hover {
+        color: blue;
+        transform: scale(1.1);
+        cursor: default;
+      }
+    }
+
+    #wrapper-div {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
   .link-wrapper {
     margin-top: 7.5px;
     margin-left: auto;
