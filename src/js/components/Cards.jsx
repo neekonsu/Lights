@@ -107,11 +107,30 @@ class Room extends Component {
     console.log(this.props.lumer + ': mounted!')
   }
   handleClick() {
-    this.setState(prevState => ({
+    var room = this.props.lumer
+    var database = firebase.database().ref()
+    if(room == "all") {
+        database.child('/rooms/all').set(!this.state.isToggleOn)
+        database.child('/rooms/sDiningRoom').set(!this.state.isToggleOn)
+        database.child('/rooms/sFamilyRoom').set(!this.state.isToggleOn)
+        database.child('/rooms/sGallery').set(!this.state.isToggleOn)
+        database.child('/rooms/sGuestBathroom').set(!this.state.isToggleOn)
+        database.child('/rooms/sHomeworkRoom').set(!this.state.isToggleOn)
+        database.child('/rooms/sKitchen').set(!this.state.isToggleOn)
+        database.child('/rooms/sLivingRoom').set(!this.state.isToggleOn)
+        database.child('/rooms/sMasterBedroom').set(!this.state.isToggleOn)
+        database.child('/rooms/sNeekonBedroom').set(!this.state.isToggleOn)
+        database.child('/rooms/sOffice').set(!this.state.isToggleOn)
+        database.child('/rooms/sOfficeBathroom').set(!this.state.isToggleOn)
+        database.child('/rooms/sRyanRoom').set(!this.state.isToggleOn)
+        this.setState(prevState => ({
+          isToggleOn: !prevState.isToggleOn
+        }))
+    }
+    this.setState( prevState => ({
       isToggleOn: !prevState.isToggleOn
-    }));
-    var database = firebase.database()
-    firebase.database().ref().child('/rooms/' + this.props.lumer).set(!this.state.isToggleOn);
+    }) )
+    firebase.database().ref().child('/rooms/' + this.props.lumer).set(!this.state.isToggleOn)
     console.log(this.props.lumer + ": " + !this.state.isToggleOn)
   }
 
