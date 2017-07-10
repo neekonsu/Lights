@@ -137,7 +137,7 @@ class Room extends Component {
   render() {
     return (
         <a onClick={this.handleClick} className={this.state.isToggleOn ? "toggle-text-off" : "toggle-text-on"}>
-          {this.state.isToggleOn ? this.props.children + ': ON' : this.props.children + ': OFF'}
+          {this.state.isToggleOn ? this.props.children + ': OFF' : this.props.children + ': ON'}
         </a>
     )
   }
