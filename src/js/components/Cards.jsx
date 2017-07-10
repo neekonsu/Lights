@@ -104,7 +104,7 @@ class Room extends Component {
         isToggleOn: state
       })
     })
-    console.log(this.props.lumer + ': mounted!')
+    console.log(this.props.lumer + ': mounted!' )
   }
   handleClick() {
     var room = this.props.lumer
@@ -136,7 +136,7 @@ class Room extends Component {
 
   render() {
     return (
-        <a onClick={this.handleClick} className={this.state.isToggleOn ? "toggle-text-on" : "toggle-text-off"}>
+        <a onClick={this.handleClick} className={this.state.isToggleOn ? "toggle-text-off" : "toggle-text-on"}>
           {this.state.isToggleOn ? this.props.children + ': ON' : this.props.children + ': OFF'}
         </a>
     )
